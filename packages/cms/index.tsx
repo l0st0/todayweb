@@ -1,2 +1,4 @@
-export * from "./src/Button";
-export * from "./src/styles/theme";
+export * from "@/components/AppLayout";
+
+export * from "@/styles/theme";
+export * from "@/types";
