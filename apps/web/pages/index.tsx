@@ -1,4 +1,4 @@
-import { Button } from "todayweb-ui-cms";
+import { Button } from "@todayweb/cms";
 
 export default function Web() {
   return (
