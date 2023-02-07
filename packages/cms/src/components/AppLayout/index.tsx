@@ -5,21 +5,15 @@ import { Box, Divider, IconButton, Stack } from "@mui/material";
 import { Navigation } from "../Navigation";
 import { SettingsMenu } from "../SettingsMenu";
 import { StyledDrawerHeader, StyledDrawer } from "./styles";
-import {
-  DrawerWidth,
-  NavigationItem,
-  OnItemClick,
-  SettingMenuItem,
-} from "../../types";
+import { NavigationItem, SettingMenuItem } from "../../types";
 
 export interface AdminLayoutProps {
   logo: JSX.Element;
   asPath: string;
   navigationItems: NavigationItem[];
-  onNavigationItemClick: OnItemClick;
   settingMenuItems: SettingMenuItem[];
-  drawerwidth?: DrawerWidth;
-  email?: string;
+  drawerwidth?: number;
+  user?: string;
 }
 
 export const AppLayout = ({
@@ -28,8 +22,7 @@ export const AppLayout = ({
   asPath,
   navigationItems,
   drawerwidth = 240,
-  onNavigationItemClick,
-  email,
+  user,
   settingMenuItems,
 }: React.PropsWithChildren<AdminLayoutProps>) => {
   const [open, setOpen] = React.useState(false);
@@ -74,10 +67,9 @@ export const AppLayout = ({
             items={navigationItems}
             open={open}
             checkActiveNav={checkActiveNav}
-            onItemClick={onNavigationItemClick}
           />
 
-          <SettingsMenu items={settingMenuItems} open={open} email={email} />
+          <SettingsMenu items={settingMenuItems} open={open} user={user} />
         </Stack>
       </StyledDrawer>
 

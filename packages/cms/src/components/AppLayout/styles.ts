@@ -1,9 +1,8 @@
-import { DrawerWidth } from "../../types";
 import { CSSObject, Drawer, Theme, styled, DrawerProps } from "@mui/material";
 import { StyledComponent } from "@emotion/styled";
 
 interface StyledDrawerProps extends DrawerProps {
-  drawerwidth: DrawerWidth;
+  drawerwidth: number;
 }
 
 const openedMixin = (theme: Theme, drawerWidth: number): CSSObject => ({

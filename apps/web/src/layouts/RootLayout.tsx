@@ -34,21 +34,12 @@ const settingMenuItems = [
 
 const RootLayout = ({ children }: React.PropsWithChildren) => {
   const router = useRouter();
-
-  const onNavigationItemClick = (path: string) => router.push(path);
-
   return (
     <AppLayout
       navigationItems={navigationItems}
       asPath={router.asPath}
       logo={<Home width={36} />}
-      onNavigationItemClick={onNavigationItemClick}
-      topBarHeading="Heading"
       settingMenuItems={settingMenuItems}
-      backButton={{
-        show: true,
-        onClick: () => router.back(),
-      }}
     >
       {children}
     </AppLayout>

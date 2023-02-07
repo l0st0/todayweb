@@ -6,20 +6,19 @@ import {
   ListItemText,
   Tooltip,
 } from "@mui/material";
-import { NavigationItem, OnItemClick } from "../../types";
+import Link from "next/link";
+import { NavigationItem } from "../../types";
 
 export interface NavigationProps {
   open: boolean;
   items: NavigationItem[];
   checkActiveNav: (path: string) => boolean;
-  onItemClick: OnItemClick;
 }
 
 export const Navigation = ({
   open,
   items,
   checkActiveNav,
-  onItemClick,
 }: NavigationProps) => {
   return (
     <List>
@@ -28,28 +27,29 @@ export const Navigation = ({
 
         return (
           <Tooltip key={name} title={open ? "" : name} placement="right" arrow>
-            <ListItem disablePadding sx={{ display: "block" }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
-                }}
-                selected={active}
-                onClick={() => onItemClick(path)}
-              >
-                <ListItemIcon
+            <Link legacyBehavior href={path}>
+              <ListItem disablePadding sx={{ display: "block" }}>
+                <ListItemButton
                   sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
+                    minHeight: 48,
+                    justifyContent: open ? "initial" : "center",
+                    px: 2.5,
                   }}
+                  selected={active}
                 >
-                  {icon}
-                </ListItemIcon>
-                <ListItemText primary={name} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : "auto",
+                      justifyContent: "center",
+                    }}
+                  >
+                    {icon}
+                  </ListItemIcon>
+                  <ListItemText primary={name} sx={{ opacity: open ? 1 : 0 }} />
+                </ListItemButton>
+              </ListItem>
+            </Link>
           </Tooltip>
         );
       })}

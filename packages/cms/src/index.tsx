@@ -9,3 +9,4 @@ export * from "./components/Result";
 export * from "./components/Center";
 export * from "./components/Loading";
 export * from "./components/DataGridToolBar";
+export * from "./components/TopHeading";

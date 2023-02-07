@@ -1,6 +1,3 @@
-export type DrawerWidth = number;
-export type OnItemClick = (path: string) => void;
-
 export interface NavigationItem {
   name: string;
   icon: JSX.Element;

@@ -15,10 +15,10 @@ import { SettingMenuItem } from "../../types";
 interface SettingsMenuProps {
   open: boolean;
   items: SettingMenuItem[];
-  email?: string;
+  user?: string;
 }
 
-export const SettingsMenu = ({ items, open, email }: SettingsMenuProps) => {
+export const SettingsMenu = ({ items, open, user }: SettingsMenuProps) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   const handleClose = () => setAnchorEl(null);
@@ -28,11 +28,7 @@ export const SettingsMenu = ({ items, open, email }: SettingsMenuProps) => {
   return (
     <Box>
       <Divider />
-      <Tooltip
-        title={open ? "" : email || "Nastavenia"}
-        placement="right"
-        arrow
-      >
+      <Tooltip title={open ? "" : user || "Nastavenia"} placement="right" arrow>
         <Stack
           justifyContent="flex-start"
           direction="row"
@@ -51,7 +47,7 @@ export const SettingsMenu = ({ items, open, email }: SettingsMenuProps) => {
             <AccountBoxRounded color="primary" />
           </IconButton>
 
-          {open && <span>{email || "Nastavenia"}</span>}
+          {open && <span>{user || "Nastavenia"}</span>}
         </Stack>
       </Tooltip>
       <Menu
