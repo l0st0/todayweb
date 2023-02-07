@@ -1,8 +1,11 @@
 {
   "name": "@todayweb/cms",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**"
+  ],
   "license": "MIT",
   "scripts": {
     "build": "tsup src/index.tsx --format cjs --dts --minify --external react",
