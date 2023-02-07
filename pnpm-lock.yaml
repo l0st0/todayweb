@@ -81,8 +81,49 @@ importers:
       tsup: 6.5.0_typescript@4.9.5
       typescript: 4.9.5
 
+  packages/hooks:
+    specifiers:
+      '@todayweb/tsconfig': '*'
+      '@types/react': ^18.0.27
+      '@types/react-dom': ^18.0.10
+      react: ^18.2.0
+      react-dom: ^18.2.0
+      tsup: ^6.5.0
+      typescript: ^4.9.5
+    devDependencies:
+      '@todayweb/tsconfig': link:../tsconfig
+      '@types/react': 18.0.27
+      '@types/react-dom': 18.0.10
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      tsup: 6.5.0_typescript@4.9.5
+      typescript: 4.9.5
+
   packages/tsconfig:
     specifiers: {}
+
+  packages/utils:
+    specifiers:
+      '@todayweb/tsconfig': '*'
+      '@types/bcryptjs': ^2.4.2
+      '@types/react': ^18.0.27
+      '@types/react-dom': ^18.0.10
+      bcryptjs: ^2.4.3
+      react: ^18.2.0
+      react-dom: ^18.2.0
+      tsup: ^6.5.0
+      typescript: ^4.9.5
+    dependencies:
+      bcryptjs: 2.4.3
+    devDependencies:
+      '@todayweb/tsconfig': link:../tsconfig
+      '@types/bcryptjs': 2.4.2
+      '@types/react': 18.0.27
+      '@types/react-dom': 18.0.10
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      tsup: 6.5.0_typescript@4.9.5
+      typescript: 4.9.5
 
 packages:
 
@@ -1023,6 +1064,10 @@ packages:
       tslib: 2.5.0
     dev: false
 
+  /@types/bcryptjs/2.4.2:
+    resolution: {integrity: sha512-LiMQ6EOPob/4yUL66SZzu6Yh77cbzJFYll+ZfaPiPPFswtIlA/Fs1MzdKYA7JApHU49zQTbJGX3PDmCpIdDBRQ==}
+    dev: true
+
   /@types/is-ci/3.0.0:
     resolution: {integrity: sha512-Q0Op0hdWbYd1iahB+IFNQcWXFq4O0Q5MwQP7uN0souuQ4rPg1vEYcnIOfr1gY+M+6rc8FGoRaBO1mOOvL29sEQ==}
     dependencies:
@@ -1158,6 +1203,10 @@ packages:
   /balanced-match/1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
     dev: true
+
+  /bcryptjs/2.4.3:
+    resolution: {integrity: sha512-V/Hy/X9Vt7f3BbPJEi8BdVFMByHi+jNXrYkW3huaybV/kQ0KJg0Y6PkEMbn+zeT+i+SiKZ/HMqJGIIt4LZDqNQ==}
+    dev: false
 
   /better-path-resolve/1.0.0:
     resolution: {integrity: sha512-pbnl5XzGBdrFU/wT4jqmJVPn2B6UHPBOhzMQkY/SPUPB6QtUXtmBHBIwCbXJol93mOpGMnQyP/+BB19q04xj7g==}

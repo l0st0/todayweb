@@ -27,16 +27,16 @@ const closedMixin = (theme: Theme): CSSObject => ({
   },
 });
 
-export const StyledDrawerHeader: StyledComponent<HTMLDivElement> = styled(
-  "div"
-)(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "space-between",
-  padding: theme.spacing(0, 2),
-  // necessary for content to be below app bar
-  ...theme.mixins.toolbar,
-}));
+export const StyledDrawerHeader: StyledComponent<any> = styled("div")(
+  ({ theme }) => ({
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    padding: theme.spacing(0, 2),
+    // necessary for content to be below app bar
+    ...theme.mixins.toolbar,
+  })
+);
 
 export const StyledDrawer: StyledComponent<StyledDrawerProps> = styled(Drawer, {
   shouldForwardProp: (prop) => prop !== "open",
