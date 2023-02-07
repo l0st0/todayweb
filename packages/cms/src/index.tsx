@@ -4,7 +4,6 @@ export * from "./types";
 export * from "./components/AppLayout";
 export * from "./components/Navigation";
 export * from "./components/HomeNavigation";
-export * from "./components/TopBar";
 export * from "./components/SettingsMenu";
 export * from "./components/Result";
 export * from "./components/Center";

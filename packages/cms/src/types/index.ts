@@ -1,10 +1,5 @@
 export type DrawerWidth = number;
 export type OnItemClick = (path: string) => void;
-export type TopBarHeading = string;
-export type BackButton = {
-  show: boolean;
-  onClick: () => void;
-};
 
 export interface NavigationItem {
   name: string;

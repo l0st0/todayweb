@@ -1,17 +1,15 @@
 import React from "react";
-import { ChevronLeft } from "@mui/icons-material";
-import { Box, Divider, IconButton } from "@mui/material";
+import { ChevronLeft, Menu } from "@mui/icons-material";
+import { Box, Divider, IconButton, Stack } from "@mui/material";
 
 import { Navigation } from "../Navigation";
-import { TopBar } from "../TopBar";
+import { SettingsMenu } from "../SettingsMenu";
 import { StyledDrawerHeader, StyledDrawer } from "./styles";
 import {
-  BackButton,
   DrawerWidth,
   NavigationItem,
   OnItemClick,
   SettingMenuItem,
-  TopBarHeading,
 } from "../../types";
 
 export interface AdminLayoutProps {
@@ -19,10 +17,9 @@ export interface AdminLayoutProps {
   asPath: string;
   navigationItems: NavigationItem[];
   onNavigationItemClick: OnItemClick;
-  topBarHeading: TopBarHeading;
-  backButton: BackButton;
   settingMenuItems: SettingMenuItem[];
   drawerwidth?: DrawerWidth;
+  email?: string;
 }
 
 export const AppLayout = ({
@@ -32,8 +29,7 @@ export const AppLayout = ({
   navigationItems,
   drawerwidth = 240,
   onNavigationItemClick,
-  backButton,
-  topBarHeading,
+  email,
   settingMenuItems,
 }: React.PropsWithChildren<AdminLayoutProps>) => {
   const [open, setOpen] = React.useState(false);
@@ -45,28 +41,44 @@ export const AppLayout = ({
 
   return (
     <Box sx={{ display: "flex", height: "100%" }}>
-      <TopBar
-        open={open}
-        handleDrawerOpen={handleDrawerOpen}
-        drawerwidth={drawerwidth}
-        topBarHeading={topBarHeading}
-        backButton={backButton}
-        settingMenuItems={settingMenuItems}
-      />
       <StyledDrawer variant="permanent" open={open} drawerwidth={drawerwidth}>
-        <StyledDrawerHeader>
+        <StyledDrawerHeader
+          sx={{
+            ml: 1,
+            ...(open && { display: "none" }),
+          }}
+        >
+          <IconButton
+            color="primary"
+            aria-label="open drawer"
+            onClick={handleDrawerOpen}
+            edge="start"
+          >
+            <Menu />
+          </IconButton>
+        </StyledDrawerHeader>
+
+        <StyledDrawerHeader
+          sx={{
+            ...(!open && { display: "none" }),
+          }}
+        >
           {logo}
           <IconButton onClick={handleDrawerClose}>
             <ChevronLeft />
           </IconButton>
         </StyledDrawerHeader>
         <Divider />
-        <Navigation
-          items={navigationItems}
-          open={open}
-          checkActiveNav={checkActiveNav}
-          onItemClick={onNavigationItemClick}
-        />
+        <Stack justifyContent="space-between" height="100%">
+          <Navigation
+            items={navigationItems}
+            open={open}
+            checkActiveNav={checkActiveNav}
+            onItemClick={onNavigationItemClick}
+          />
+
+          <SettingsMenu items={settingMenuItems} open={open} email={email} />
+        </Stack>
       </StyledDrawer>
 
       <Box
@@ -75,7 +87,6 @@ export const AppLayout = ({
         sx={{
           flexGrow: 1,
           p: 4,
-          mt: 8,
         }}
       >
         {children}
