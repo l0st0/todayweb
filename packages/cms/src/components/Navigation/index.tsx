@@ -26,8 +26,13 @@ export const Navigation = ({
         const active = checkActiveNav(path);
 
         return (
-          <Tooltip key={name} title={open ? "" : name} placement="right" arrow>
-            <Link legacyBehavior href={path}>
+          <Link legacyBehavior href={path}>
+            <Tooltip
+              key={name}
+              title={open ? "" : name}
+              placement="right"
+              arrow
+            >
               <ListItem disablePadding sx={{ display: "block" }}>
                 <ListItemButton
                   sx={{
@@ -49,8 +54,8 @@ export const Navigation = ({
                   <ListItemText primary={name} sx={{ opacity: open ? 1 : 0 }} />
                 </ListItemButton>
               </ListItem>
-            </Link>
-          </Tooltip>
+            </Tooltip>
+          </Link>
         );
       })}
     </List>
