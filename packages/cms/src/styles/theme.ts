@@ -36,10 +36,10 @@ export const theme: ThemeOptions = {
           minHeight: "100vh",
         },
         body: {
-          height: "100%",
+          minHeight: "100%",
         },
         "#__next": {
-          height: "100%",
+          minHeight: "100%",
         },
       },
     },

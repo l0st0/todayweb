@@ -4,21 +4,21 @@ import { Box, Divider, IconButton } from "@mui/material";
 
 import { Navigation } from "../Navigation";
 import { TopBar } from "../TopBar";
-import { DrawerHeader, Drawer } from "./styles";
+import { StyledDrawerHeader, StyledDrawer } from "./styles";
 import {
   BackButton,
   DrawerWidth,
   NavigationItem,
-  OnNavigationItemClick,
+  OnItemClick,
   SettingMenuItem,
   TopBarHeading,
-} from "@/types";
+} from "../../types";
 
 export interface AdminLayoutProps {
   logo: JSX.Element;
   asPath: string;
   navigationItems: NavigationItem[];
-  onNavigationItemClick: OnNavigationItemClick;
+  onNavigationItemClick: OnItemClick;
   topBarHeading: TopBarHeading;
   backButton: BackButton;
   settingMenuItems: SettingMenuItem[];
@@ -53,13 +53,13 @@ export const AppLayout = ({
         backButton={backButton}
         settingMenuItems={settingMenuItems}
       />
-      <Drawer variant="permanent" open={open} drawerwidth={drawerwidth}>
-        <DrawerHeader>
+      <StyledDrawer variant="permanent" open={open} drawerwidth={drawerwidth}>
+        <StyledDrawerHeader>
           {logo}
           <IconButton onClick={handleDrawerClose}>
             <ChevronLeft />
           </IconButton>
-        </DrawerHeader>
+        </StyledDrawerHeader>
         <Divider />
         <Navigation
           items={navigationItems}
@@ -67,17 +67,17 @@ export const AppLayout = ({
           checkActiveNav={checkActiveNav}
           onItemClick={onNavigationItemClick}
         />
-      </Drawer>
+      </StyledDrawer>
 
       <Box
         component="main"
-        height={{ xs: "calc(100% - 56px)", sm: "calc(100% - 64px)" }}
+        height="100%"
         sx={{
           flexGrow: 1,
-          p: 3,
+          p: 4,
+          mt: 8,
         }}
       >
-        <DrawerHeader />
         {children}
       </Box>
     </Box>

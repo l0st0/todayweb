@@ -1,13 +1,8 @@
-import { DrawerWidth } from "@/types";
-import {
-  CSSObject,
-  Drawer as MuiDrawer,
-  Theme,
-  styled,
-  DrawerProps as MuiDrawerProps,
-} from "@mui/material";
+import { DrawerWidth } from "../../types";
+import { CSSObject, Drawer, Theme, styled, DrawerProps } from "@mui/material";
+import { StyledComponent } from "@emotion/styled";
 
-interface DrawerProps extends MuiDrawerProps {
+interface StyledDrawerProps extends DrawerProps {
   drawerwidth: DrawerWidth;
 }
 
@@ -32,7 +27,9 @@ const closedMixin = (theme: Theme): CSSObject => ({
   },
 });
 
-export const DrawerHeader = styled("div")(({ theme }) => ({
+export const StyledDrawerHeader: StyledComponent<HTMLDivElement> = styled(
+  "div"
+)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
@@ -41,9 +38,9 @@ export const DrawerHeader = styled("div")(({ theme }) => ({
   ...theme.mixins.toolbar,
 }));
 
-export const Drawer = styled(MuiDrawer, {
+export const StyledDrawer: StyledComponent<StyledDrawerProps> = styled(Drawer, {
   shouldForwardProp: (prop) => prop !== "open",
-})<DrawerProps>(({ theme, open, drawerwidth }) => ({
+})<StyledDrawerProps>(({ theme, open, drawerwidth }) => ({
   width: drawerwidth,
   flexShrink: 0,
   whiteSpace: "nowrap",

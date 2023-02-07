@@ -1,7 +1,7 @@
 import React from "react";
 import { AccountCircle } from "@mui/icons-material";
 import { IconButton, ListItemIcon, Menu, MenuItem } from "@mui/material";
-import { SettingMenuItem } from "@/types";
+import { SettingMenuItem } from "../../types";
 
 interface SettingsMenuProps {
   items: SettingMenuItem[];

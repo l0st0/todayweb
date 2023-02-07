@@ -3,12 +3,12 @@ import {
   DrawerWidth,
   SettingMenuItem,
   TopBarHeading,
-} from "@/types";
+} from "../../types";
 import { ArrowBack, Menu } from "@mui/icons-material";
 import { Box, IconButton, Stack, Toolbar, Typography } from "@mui/material";
 
 import { SettingsMenu } from "../SettingsMenu";
-import { AppBar } from "./styles";
+import { StyledAppBar } from "./styles";
 
 interface TopBarProps {
   open: boolean;
@@ -28,7 +28,7 @@ export const TopBar = ({
   settingMenuItems,
 }: TopBarProps) => {
   return (
-    <AppBar position="fixed" open={open} drawerwidth={drawerwidth}>
+    <StyledAppBar position="fixed" open={open} drawerwidth={drawerwidth}>
       <Toolbar>
         <IconButton
           color="inherit"
@@ -56,6 +56,6 @@ export const TopBar = ({
         <Box sx={{ flexGrow: 1 }} />
         <SettingsMenu items={settingMenuItems} />
       </Toolbar>
-    </AppBar>
+    </StyledAppBar>
   );
 };

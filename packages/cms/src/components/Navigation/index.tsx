@@ -6,13 +6,13 @@ import {
   ListItemText,
   Tooltip,
 } from "@mui/material";
-import { NavigationItem, OnNavigationItemClick } from "@/types";
+import { NavigationItem, OnItemClick } from "../../types";
 
 export interface NavigationProps {
   open: boolean;
   items: NavigationItem[];
   checkActiveNav: (path: string) => boolean;
-  onItemClick: OnNavigationItemClick;
+  onItemClick: OnItemClick;
 }
 
 export const Navigation = ({

@@ -1,22 +1,26 @@
-import { Group, Home } from "@mui/icons-material";
+import { Group, Home, AbcSharp } from "@mui/icons-material";
 import { AppLayout } from "@todayweb/cms";
 import { useRouter } from "next/router";
 import React from "react";
 
-const navigationItems = [
+export const navigationItems = [
   {
     name: "Domov",
     icon: <Home />,
     path: "/",
     hideInHome: true,
-    roles: [],
   },
   {
-    name: "Administrácia",
+    name: "Result",
     icon: <Group />,
-    path: "/administration",
+    path: "/result",
     hideInHome: false,
-    roles: ["admin"],
+  },
+  {
+    name: "Normal",
+    icon: <AbcSharp />,
+    path: "/normal",
+    hideInHome: false,
   },
 ];
 
