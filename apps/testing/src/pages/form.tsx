@@ -1,8 +1,9 @@
 import { LoadingButton } from "@mui/lab";
-import { Form, FormTextInput } from "@todayweb/cms";
+import { Form, FormPasswordInput, FormTextInput } from "@todayweb/cms";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 const scheme = z.object({
   email: z.string().email("Zadaj platný e-mail."),
@@ -12,16 +13,27 @@ const scheme = z.object({
 type Form = z.infer<typeof scheme>;
 
 const FormPage = () => {
-  const { control } = useForm({
+  const { control, handleSubmit } = useForm({
     defaultValues: { email: "", password: "" },
+    resolver: zodResolver(scheme),
   });
 
   return (
-    <Form>
-      <FormTextInput control={control} name="password" label="Staré heslo" />
+    <Form
+      onSubmit={handleSubmit((values) => {
+        console.log(values);
+      })}
+    >
       <FormTextInput control={control} name="email" label="Staré heslo" />
+      <FormPasswordInput
+        control={control}
+        name="password"
+        label="Staré heslo"
+      />
 
-      <LoadingButton fullWidth>Submit</LoadingButton>
+      <LoadingButton fullWidth type="submit">
+        Submit
+      </LoadingButton>
     </Form>
   );
 };

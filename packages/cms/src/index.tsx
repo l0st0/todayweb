@@ -12,3 +12,4 @@ export * from "./components/DataGridToolBar";
 export * from "./components/TopHeading";
 export * from "./components/Form";
 export * from "./components/FormTextInput";
+export * from "./components/FormPasswordInput";

@@ -5,14 +5,14 @@ import {
   FieldValues,
 } from "react-hook-form";
 
-type TextFieldProps<T extends FieldValues> = StandardTextFieldProps &
+export type FormTextInputProps<T extends FieldValues> = StandardTextFieldProps &
   UseControllerProps<T>;
 
 export const FormTextInput = <T extends FieldValues>({
   control,
   name,
   ...rest
-}: TextFieldProps<T>) => {
+}: FormTextInputProps<T>) => {
   const {
     field,
     fieldState: { error },
