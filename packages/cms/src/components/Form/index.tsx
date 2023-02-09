@@ -1,7 +1,7 @@
 import { Stack, StackProps } from "@mui/material";
 
 export interface FormProps extends StackProps<"form"> {
-  smWidth?: number;
+  smWidth?: number | string;
 }
 
 export const Form = ({
