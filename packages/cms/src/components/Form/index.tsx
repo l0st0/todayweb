@@ -1,25 +1,26 @@
-import { Box, BoxProps, Stack } from "@mui/material";
+import { Stack, StackProps } from "@mui/material";
 
-export interface FormContainerProps extends BoxProps {
+export interface FormProps extends StackProps<"form"> {
   smWidth?: number;
 }
 
-export const FormContainer = ({
+export const Form = ({
   children,
   onSubmit,
   smWidth = 364,
   ...rest
-}: FormContainerProps) => {
+}: FormProps) => {
   return (
-    <Box
+    <Stack
       component="form"
       noValidate
       onSubmit={onSubmit}
+      spacing={2}
       width="100%"
       maxWidth={{ xs: "100%", sm: smWidth }}
       {...rest}
     >
-      <Stack spacing={2}>{children}</Stack>
-    </Box>
+      {children}
+    </Stack>
   );
 };

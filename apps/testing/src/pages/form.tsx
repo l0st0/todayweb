@@ -1,15 +1,15 @@
 import { LoadingButton } from "@mui/lab";
-import { FormContainer, FormTextInput } from "@todayweb/cms";
+import { Form, FormTextInput } from "@todayweb/cms";
 import React from "react";
 import { useForm } from "react-hook-form";
 
-const Form = () => {
+const FormPage = () => {
   const { control, handleSubmit, reset } = useForm({
     defaultValues: { oldPassword: "", password: "", confirmPassword: "" },
   });
 
   return (
-    <FormContainer>
+    <Form>
       <FormTextInput name="password" control={control} label="Staré heslo" />
       <FormTextInput
         name="confirmPassword"
@@ -18,8 +18,8 @@ const Form = () => {
       />
 
       <LoadingButton fullWidth>Submit</LoadingButton>
-    </FormContainer>
+    </Form>
   );
 };
 
-export default Form;
+export default FormPage;

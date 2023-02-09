@@ -10,5 +10,5 @@ export * from "./components/Center";
 export * from "./components/Loading";
 export * from "./components/DataGridToolBar";
 export * from "./components/TopHeading";
-export * from "./components/FormContainer";
+export * from "./components/Form";
 export * from "./components/FormTextInput";
