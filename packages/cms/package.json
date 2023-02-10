@@ -1,15 +1,16 @@
 {
   "name": "@todayweb/cms",
-  "version": "0.0.11",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "version": "0.0.13",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
-    "dist/**"
+    "dist/*"
   ],
   "license": "MIT",
   "scripts": {
-    "build": "tsup src/index.tsx --format cjs --dts --minify --external react",
-    "dev": "tsup src/index.tsx --format cjs --watch --dts --external react",
+    "build": "tsup",
+    "dev": "tsup --watch",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "repository": {

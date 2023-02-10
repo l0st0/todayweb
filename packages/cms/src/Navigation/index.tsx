@@ -7,7 +7,7 @@ import {
   Tooltip,
 } from "@mui/material";
 import Link from "next/link";
-import { NavigationItem } from "../../types";
+import { NavigationItem } from "../types";
 
 export interface NavigationProps {
   open: boolean;
@@ -26,7 +26,7 @@ export const Navigation = ({
         const active = checkActiveNav(path);
 
         return (
-          <Link legacyBehavior href={path}>
+          <Link key={name} legacyBehavior href={path}>
             <Tooltip
               key={name}
               title={open ? "" : name}

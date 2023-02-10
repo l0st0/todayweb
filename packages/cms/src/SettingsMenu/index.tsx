@@ -10,7 +10,7 @@ import {
   Stack,
   Tooltip,
 } from "@mui/material";
-import { SettingMenuItem } from "../../types";
+import { SettingMenuItem } from "../types";
 
 interface SettingsMenuProps {
   open: boolean;

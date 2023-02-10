@@ -5,7 +5,7 @@ import { Box, Divider, IconButton, Stack } from "@mui/material";
 import { Navigation } from "../Navigation";
 import { SettingsMenu } from "../SettingsMenu";
 import { StyledDrawerHeader, StyledDrawer } from "./styles";
-import { NavigationItem, SettingMenuItem } from "../../types";
+import { NavigationItem, SettingMenuItem } from "../types";
 
 export interface AdminLayoutProps {
   logo: JSX.Element;
