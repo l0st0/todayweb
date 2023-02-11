@@ -1,11 +1,11 @@
 import type { Options } from "tsup";
 
 export const tsup: Options = {
-  format: ["cjs", "esm"],
-  entryPoints: ["src/index.ts"],
   splitting: true,
-  clean: true,
-  dts: true,
+  clean: true, // clean up the dist folder
+  dts: true, // generate dts files
+  format: ["esm", "cjs"], // generate cjs and esm files
   minify: true,
-  treeshake: true,
+  outDir: "dist",
+  entry: ["src/**/*.ts", "src/**/*.tsx"],
 };
