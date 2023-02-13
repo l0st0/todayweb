@@ -4,3 +4,4 @@ export * from "./createRandomString";
 export * from "./createSlug";
 export * from "./passwordHash";
 export * from "./passwordMatch";
+export * from "./getEmailProvider";
