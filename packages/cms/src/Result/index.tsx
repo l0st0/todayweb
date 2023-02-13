@@ -35,7 +35,7 @@ export const Result = ({
   return (
     <Center spacing={2} {...rest}>
       {iconElement}
-      <Typography variant="h5" {...textProps}>
+      <Typography variant="h5" textAlign="center" {...textProps}>
         {text}
       </Typography>
       {children}

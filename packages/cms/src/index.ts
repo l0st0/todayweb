@@ -13,3 +13,4 @@ export * from "./TopHeading";
 export * from "./Form";
 export * from "./FormTextInput";
 export * from "./FormPasswordInput";
+export * from "./LoginForm";
