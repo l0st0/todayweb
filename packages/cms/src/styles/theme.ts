@@ -2,11 +2,6 @@ import type {} from "@mui/lab/themeAugmentation";
 import { ThemeOptions } from "@mui/material/styles";
 
 export const theme: ThemeOptions = {
-  palette: {
-    primary: {
-      main: "#64A0FA",
-    },
-  },
   typography: {
     h1: {
       fontWeight: 500,

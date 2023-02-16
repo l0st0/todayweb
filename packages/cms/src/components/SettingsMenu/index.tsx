@@ -45,8 +45,8 @@ export const SettingsMenu = ({ items, open, user }: SettingsMenuProps) => {
             color="inherit"
           >
             <AccountBoxRounded color="primary" />
-            {open && <span>{user || "Nastavenia"}</span>}
           </IconButton>
+          {open && <span>{user || "Nastavenia"}</span>}
         </Stack>
       </Tooltip>
       <Menu
