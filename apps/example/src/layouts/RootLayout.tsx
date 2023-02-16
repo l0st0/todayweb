@@ -1,4 +1,4 @@
-import { Group, Home, AbcSharp } from "@mui/icons-material";
+import { Home, Login } from "@mui/icons-material";
 import { AppLayout } from "@todayweb/cms";
 import { useRouter } from "next/router";
 import React from "react";
@@ -11,15 +11,9 @@ export const navigationItems = [
     hideInHome: true,
   },
   {
-    name: "Result",
-    icon: <Group />,
-    path: "/result",
-    hideInHome: false,
-  },
-  {
-    name: "Normal",
-    icon: <AbcSharp />,
-    path: "/normal",
+    name: "Login",
+    icon: <Login />,
+    path: "/auth/login",
     hideInHome: false,
   },
 ];
@@ -38,7 +32,7 @@ const RootLayout = ({ children }: React.PropsWithChildren) => {
     <AppLayout
       navigationItems={navigationItems}
       asPath={router.asPath}
-      logo={<Home width={36} />}
+      logo={<img src="/minilogo.png" width={52} />}
       settingMenuItems={settingMenuItems}
     >
       {children}

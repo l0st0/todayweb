@@ -1,6 +1,6 @@
-import { Home } from "@mui/icons-material";
-import { Stack } from "@mui/material";
-import { HomePage } from "@todayweb/cms";
+import { GitHub } from "@mui/icons-material";
+import { Button, Stack } from "@mui/material";
+import { Center, HomePage } from "@todayweb/cms";
 import { navigationItems } from "../layouts/RootLayout";
 
 export default function Web() {
@@ -8,8 +8,20 @@ export default function Web() {
     <Stack>
       <HomePage
         items={navigationItems}
-        logo={<Home sx={{ width: 200, height: 200 }} />}
+        logo={<img src="/logo.jpg" width={512} />}
       />
+
+      <Center mt={2}>
+        <Button
+          component="a"
+          href="https://github.com/l0st0/todayweb"
+          variant="text"
+          startIcon={<GitHub />}
+          target="_blank"
+        >
+          Check the code
+        </Button>
+      </Center>
     </Stack>
   );
 }
