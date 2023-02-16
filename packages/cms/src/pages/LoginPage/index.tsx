@@ -14,7 +14,7 @@ export const LoginPage = ({
   const { t } = useCmsState();
 
   return (
-    <Center spacing={2} height="100vh">
+    <Center spacing={2} fullScreen>
       <Typography variant="h4" textAlign="center">
         {t("loginHeading")}
       </Typography>

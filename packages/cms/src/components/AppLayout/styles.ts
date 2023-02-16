@@ -1,8 +1,21 @@
-import { CSSObject, Drawer, Theme, styled, DrawerProps } from "@mui/material";
+import {
+  CSSObject,
+  Drawer,
+  Theme,
+  styled,
+  DrawerProps,
+  AppBar,
+  AppBarProps,
+} from "@mui/material";
 import { StyledComponent } from "@emotion/styled";
 
 interface StyledDrawerProps extends DrawerProps {
   drawerwidth: number;
+}
+
+interface StyledAppBarProps extends AppBarProps {
+  drawerwidth: number;
+  open: boolean;
 }
 
 const openedMixin = (theme: Theme, drawerWidth: number): CSSObject => ({
@@ -26,18 +39,16 @@ const closedMixin = (theme: Theme): CSSObject => ({
   },
 });
 
-export const StyledDrawerHeader: StyledComponent<any> = styled("div")(
-  ({ theme }) => ({
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    padding: theme.spacing(0, 2),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
-  })
-);
+export const StyledDrawerHeader = styled("div")(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  padding: theme.spacing(0, 2),
+  // necessary for content to be below app bar
+  ...theme.mixins.toolbar,
+}));
 
-export const StyledDrawer: StyledComponent<StyledDrawerProps> = styled(Drawer, {
+export const StyledDrawer = styled(Drawer, {
   shouldForwardProp: (prop) => prop !== "open",
 })<StyledDrawerProps>(({ theme, open, drawerwidth }) => ({
   width: drawerwidth,
@@ -51,5 +62,23 @@ export const StyledDrawer: StyledComponent<StyledDrawerProps> = styled(Drawer, {
   ...(!open && {
     ...closedMixin(theme),
     "& .MuiDrawer-paper": closedMixin(theme),
+  }),
+}));
+
+export const StyledAppBar: StyledComponent<StyledAppBarProps> = styled(AppBar, {
+  shouldForwardProp: (prop) => prop !== "open",
+})<StyledAppBarProps>(({ theme, open, drawerwidth }) => ({
+  zIndex: theme.zIndex.drawer + 1,
+  transition: theme.transitions.create(["width", "margin"], {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  ...(open && {
+    marginLeft: drawerwidth,
+    width: `calc(100% - ${drawerwidth}px)`,
+    transition: theme.transitions.create(["width", "margin"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
   }),
 }));

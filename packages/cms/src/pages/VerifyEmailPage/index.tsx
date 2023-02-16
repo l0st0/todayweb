@@ -17,7 +17,7 @@ export const VerifyEmailPage = ({ emailProvider }: VerifyEmailPageProps) => {
       }}
       text="Prihlasovací link bol odoslaný na tvoj e-mail"
       type="success"
-      height="100vh"
+      fullScreen
     >
       <Button component="a" variant="text" href={`https://${emailProvider}`}>
         {t("goToPage", [emailProvider])}

@@ -15,6 +15,7 @@ interface ResultProps extends React.ComponentProps<typeof Center> {
   };
   type: AlertColor;
   textProps?: TypographyProps;
+  fullScreen?: boolean;
 }
 
 export const Result = ({
@@ -23,6 +24,7 @@ export const Result = ({
   children,
   type,
   textProps,
+  fullScreen,
   ...rest
 }: ResultProps) => {
   const iconSize = icon?.size || 58;
@@ -33,7 +35,7 @@ export const Result = ({
   });
 
   return (
-    <Center spacing={2} {...rest}>
+    <Center spacing={2} fullScreen={fullScreen} {...rest}>
       {iconElement}
       <Typography variant="h5" textAlign="center" {...textProps}>
         {text}

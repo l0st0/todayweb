@@ -21,6 +21,7 @@ export interface CmsContextProviderProps {
 
 export interface IContextProps {
   t: CmsTranslateFunc;
+  topBarHeight: number;
 }
 
 export const CmsContext = React.createContext({} as IContextProps);
@@ -30,6 +31,8 @@ export const CmsContextProvider = ({
   locale = "en",
   customLocales,
 }: React.PropsWithChildren<CmsContextProviderProps>) => {
+  const topBarHeight = 128;
+
   const t = (str: CmsLocaleString, variables?: string[]) => {
     let strings = customLocales?.[locale]
       ? customLocales[locale]
@@ -48,7 +51,7 @@ export const CmsContextProvider = ({
     return string;
   };
 
-  const value = { t };
+  const value = { t, topBarHeight };
 
   return <CmsContext.Provider value={value}>{children}</CmsContext.Provider>;
 };

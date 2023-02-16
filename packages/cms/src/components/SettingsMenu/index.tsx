@@ -1,24 +1,13 @@
 import React from "react";
-import { AccountBoxRounded } from "@mui/icons-material";
-import {
-  Box,
-  Divider,
-  IconButton,
-  ListItemIcon,
-  Menu,
-  MenuItem,
-  Stack,
-  Tooltip,
-} from "@mui/material";
+import { AccountCircle } from "@mui/icons-material";
+import { IconButton, ListItemIcon, Menu, MenuItem } from "@mui/material";
 import { SettingMenuItem } from "../../types";
 
 interface SettingsMenuProps {
-  open: boolean;
   items: SettingMenuItem[];
-  user?: string;
 }
 
-export const SettingsMenu = ({ items, open, user }: SettingsMenuProps) => {
+export const SettingsMenu = ({ items }: SettingsMenuProps) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   const handleClose = () => setAnchorEl(null);
@@ -26,29 +15,18 @@ export const SettingsMenu = ({ items, open, user }: SettingsMenuProps) => {
     setAnchorEl(event.currentTarget);
 
   return (
-    <Box>
-      <Divider />
-      <Tooltip title={open ? "" : user || "Nastavenia"} placement="right" arrow>
-        <Stack
-          justifyContent="flex-start"
-          direction="row"
-          alignItems="center"
-          ml={1}
-          my={1}
-        >
-          <IconButton
-            size="large"
-            aria-label="account of current user"
-            aria-controls="menu-appbar"
-            aria-haspopup="true"
-            onClick={handleMenu}
-            color="inherit"
-          >
-            <AccountBoxRounded color="primary" />
-          </IconButton>
-          {open && <span>{user || "Nastavenia"}</span>}
-        </Stack>
-      </Tooltip>
+    <>
+      <IconButton
+        size="large"
+        aria-label="account of current user"
+        aria-controls="menu-appbar"
+        aria-haspopup="true"
+        onClick={handleMenu}
+        color="inherit"
+      >
+        <AccountCircle />
+      </IconButton>
+
       <Menu
         id="menu-appbar"
         anchorEl={anchorEl}
@@ -70,6 +48,6 @@ export const SettingsMenu = ({ items, open, user }: SettingsMenuProps) => {
           );
         })}
       </Menu>
-    </Box>
+    </>
   );
 };

@@ -18,7 +18,7 @@ export const ErrorPage = ({ backPath = "/auth/login" }: ErrorPageProps) => {
       }}
       text={t("loginError")}
       type="error"
-      height="100vh"
+      fullScreen
     >
       <Link href={backPath} legacyBehavior passHref>
         <Button color="warning">{t("tryAgain")}</Button>

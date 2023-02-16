@@ -1,11 +1,22 @@
 import React from "react";
 import { ChevronLeft, Menu } from "@mui/icons-material";
-import { Box, Divider, IconButton, Stack } from "@mui/material";
+import {
+  Box,
+  Divider,
+  IconButton,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Toolbar,
+  Tooltip,
+} from "@mui/material";
 
-import { Navigation } from "../Navigation";
 import { SettingsMenu } from "../SettingsMenu";
-import { StyledDrawerHeader, StyledDrawer } from "./styles";
+import { StyledDrawerHeader, StyledDrawer, StyledAppBar } from "./styles";
 import { NavigationItem, SettingMenuItem } from "../../types";
+import Link from "next/link";
 
 export interface AdminLayoutProps {
   logo: JSX.Element;
@@ -13,7 +24,6 @@ export interface AdminLayoutProps {
   navigationItems: NavigationItem[];
   settingMenuItems: SettingMenuItem[];
   drawerwidth?: number;
-  user?: string;
 }
 
 export const AppLayout = ({
@@ -22,7 +32,6 @@ export const AppLayout = ({
   asPath,
   navigationItems,
   drawerwidth = 240,
-  user,
   settingMenuItems,
 }: React.PropsWithChildren<AdminLayoutProps>) => {
   const [open, setOpen] = React.useState(false);
@@ -34,7 +43,32 @@ export const AppLayout = ({
 
   return (
     <Box sx={{ display: "flex", height: "100%" }}>
-      <StyledDrawer variant="permanent" open={open} drawerwidth={drawerwidth}>
+      <StyledAppBar position="fixed" open={open} drawerwidth={drawerwidth}>
+        <Toolbar>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            onClick={handleDrawerOpen}
+            edge="start"
+            sx={{
+              marginRight: { xs: 1, sm: 3 },
+              ...(open && { display: "none" }),
+            }}
+          >
+            <Menu />
+          </IconButton>
+
+          <div id="topBar-heading" />
+          <Box sx={{ flexGrow: 1 }} />
+          <SettingsMenu items={settingMenuItems} />
+        </Toolbar>
+      </StyledAppBar>
+      <StyledDrawer
+        variant="permanent"
+        open={open}
+        drawerwidth={drawerwidth}
+        sx={{ display: !open ? { xs: "none", sm: "flex" } : "flex" }}
+      >
         <StyledDrawerHeader
           sx={{
             ml: 1,
@@ -62,15 +96,48 @@ export const AppLayout = ({
           </IconButton>
         </StyledDrawerHeader>
         <Divider />
-        <Stack justifyContent="space-between" height="100%">
-          <Navigation
-            items={navigationItems}
-            open={open}
-            checkActiveNav={checkActiveNav}
-          />
 
-          <SettingsMenu items={settingMenuItems} open={open} user={user} />
-        </Stack>
+        <List>
+          {navigationItems.map(({ icon, name, path }) => {
+            const active = checkActiveNav(path);
+
+            return (
+              <Link key={name} legacyBehavior href={path}>
+                <Tooltip
+                  key={name}
+                  title={open ? "" : name}
+                  placement="right"
+                  arrow
+                >
+                  <ListItem disablePadding sx={{ display: "block" }}>
+                    <ListItemButton
+                      sx={{
+                        minHeight: 48,
+                        justifyContent: open ? "initial" : "center",
+                        px: 2.5,
+                      }}
+                      selected={active}
+                    >
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 0,
+                          mr: open ? 3 : "auto",
+                          justifyContent: "center",
+                        }}
+                      >
+                        {icon}
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={name}
+                        sx={{ opacity: open ? 1 : 0 }}
+                      />
+                    </ListItemButton>
+                  </ListItem>
+                </Tooltip>
+              </Link>
+            );
+          })}
+        </List>
       </StyledDrawer>
 
       <Box
@@ -81,6 +148,7 @@ export const AppLayout = ({
           p: 4,
         }}
       >
+        <StyledDrawerHeader />
         {children}
       </Box>
     </Box>

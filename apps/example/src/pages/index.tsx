@@ -1,11 +1,11 @@
 import { GitHub } from "@mui/icons-material";
-import { Button, Stack } from "@mui/material";
+import { Button } from "@mui/material";
 import { Center, HomePage } from "@todayweb/cms";
 import { navigationItems } from "../layouts/RootLayout";
 
 export default function Web() {
   return (
-    <Stack>
+    <>
       <HomePage
         items={navigationItems}
         logo={<img src="/logo.jpg" width={512} />}
@@ -22,6 +22,6 @@ export default function Web() {
           Check the code
         </Button>
       </Center>
-    </Stack>
+    </>
   );
 }
