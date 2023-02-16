@@ -6,7 +6,7 @@ import { FormTextInput } from "../../components/FormTextInput";
 import { FormPasswordInput } from "../../components/FormPasswordInput";
 import { Alert } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
-import { Translate, useCmsState } from "../../context";
+import { CmsTranslateFunc, useCmsState } from "../../context";
 
 export interface LoginFormProps {
   onSubmit: (values: Form) => void;
@@ -14,7 +14,7 @@ export interface LoginFormProps {
   errorMessage?: string;
 }
 
-const scheme = (t?: Translate) =>
+const scheme = (t?: CmsTranslateFunc) =>
   z.object({
     email: z.string().email(t && t("emailError")),
     password: z.string().min(8, t && t("passwordError")),

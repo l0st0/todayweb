@@ -1,20 +1,23 @@
 import React from "react";
-import { enLocaleStrings, skLocaleStrings } from "./locales";
+import { cmsEnStrings, cmsSkStrings } from "./locales";
 
-export type LocaleStrings = typeof enLocaleStrings;
-export type LocaleString = keyof LocaleStrings;
-export type Translate = (string: LocaleString) => string;
+export type CmsLocaleStrings = typeof cmsEnStrings;
+export type CmsLocaleString = keyof CmsLocaleStrings;
+export type CmsTranslateFunc = (string: CmsLocaleString) => string;
+export type CmsCustomLocaleStrings = CmsLocaleStrings & {
+  [key: string]: string;
+};
 
 export interface CmsContextProviderProps {
   locale?: "sk" | "en";
   customLocales?: {
-    en?: LocaleStrings;
-    sk?: LocaleStrings;
+    en?: CmsCustomLocaleStrings;
+    sk?: CmsCustomLocaleStrings;
   };
 }
 
 export interface IContextProps {
-  t: Translate;
+  t: CmsTranslateFunc;
 }
 
 export const CmsContext = React.createContext({} as IContextProps);
@@ -24,9 +27,9 @@ export const CmsContextProvider = ({
   locale = "en",
   customLocales,
 }: React.PropsWithChildren<CmsContextProviderProps>) => {
-  const t = (string: LocaleString) => {
-    let enStrings = enLocaleStrings;
-    let skStrings = skLocaleStrings;
+  const t = (string: CmsLocaleString) => {
+    let enStrings = cmsEnStrings;
+    let skStrings = cmsSkStrings;
 
     if (customLocales) {
       if (customLocales.en) {

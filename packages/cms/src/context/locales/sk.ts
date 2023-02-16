@@ -1,4 +1,4 @@
-export const skLocaleStrings = {
+export const cmsSkStrings = {
   loginHeading: "Prihlásiť sa",
   login: "Prihlásiť",
   email: "E-mail",

@@ -1,4 +1,4 @@
-export const enLocaleStrings = {
+export const cmsEnStrings = {
   loginHeading: "Login to admin",
   login: "Login",
   email: "E-mail",
