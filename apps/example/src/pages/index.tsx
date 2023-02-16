@@ -8,7 +8,7 @@ export default function Web() {
     <>
       <HomePage
         items={navigationItems}
-        logo={<img src="/logo.jpg" width={512} />}
+        logo={<img src="/logo.png" width={512} />}
       />
 
       <Center mt={2}>
