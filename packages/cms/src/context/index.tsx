@@ -1,27 +1,34 @@
+import {
+  createTheme,
+  CssBaseline,
+  PaletteMode,
+  ThemeOptions,
+  ThemeProvider,
+} from "@mui/material";
 import React from "react";
-import { localeStrings } from "./locales";
-
-export type CmsLocaleStrings = typeof localeStrings.en;
-export type CmsLocaleString = keyof CmsLocaleStrings;
-export type CmsTranslateFunc = (
-  str: CmsLocaleString,
-  variables?: string[]
-) => string;
-export type CmsCustomLocaleStrings = CmsLocaleStrings & {
-  [key: string]: string;
-};
+import {
+  CmsCustomLocales,
+  CmsLocale,
+  CmsLocaleString,
+  CmsTranslateFunc,
+  getLocaleString,
+} from "./locale";
+import { skSK as gridLang } from "@mui/x-data-grid";
+import { skSK } from "@mui/material/locale";
 
 export interface CmsContextProviderProps {
-  locale?: "sk" | "en";
-  customLocales?: {
-    en?: CmsCustomLocaleStrings;
-    sk?: CmsCustomLocaleStrings;
-  };
+  locale?: CmsLocale;
+  customLocales?: CmsCustomLocales;
+  theme: (mode: PaletteMode) => ThemeOptions;
 }
 
 export interface IContextProps {
   t: CmsTranslateFunc;
   topBarHeight: number;
+  mode: PaletteMode;
+  colorMode: {
+    toggleColorMode: () => void;
+  };
 }
 
 export const CmsContext = React.createContext({} as IContextProps);
@@ -30,30 +37,49 @@ export const CmsContextProvider = ({
   children,
   locale = "en",
   customLocales,
+  theme,
 }: React.PropsWithChildren<CmsContextProviderProps>) => {
-  const topBarHeight = 128;
+  const [mode, setMode] = React.useState<PaletteMode>("light");
 
-  const t = (str: CmsLocaleString, variables?: string[]) => {
-    let strings = customLocales?.[locale]
-      ? customLocales[locale]
-      : localeStrings[locale];
+  React.useEffect(() => {
+    if (!localStorage.getItem("theme")) {
+      return localStorage.setItem("theme", mode);
+    }
 
-    if (!strings) return str;
+    return setMode(localStorage.getItem("theme") as PaletteMode);
+  }, []);
 
-    let string = strings[str];
-    if (!string) return str;
-    if (!variables?.length) return string;
+  const colorMode = React.useMemo(
+    () => ({
+      toggleColorMode: () => {
+        setMode((prevMode) => {
+          const newMode = prevMode === "light" ? "dark" : "light";
+          localStorage.setItem("theme", newMode);
+          return newMode;
+        });
+      },
+    }),
+    []
+  );
 
-    variables.map((item, index) => {
-      string = string.replace(`{${index}}`, item);
-    });
+  const themeMode = React.useMemo(
+    () => createTheme(theme(mode), gridLang, skSK),
+    [mode]
+  );
 
-    return string;
-  };
+  const t = (str: CmsLocaleString, variables?: string[]) =>
+    getLocaleString({ str, variables, customLocales, locale });
 
-  const value = { t, topBarHeight };
+  const value = { t, topBarHeight: 128, mode, colorMode };
 
-  return <CmsContext.Provider value={value}>{children}</CmsContext.Provider>;
+  return (
+    <CmsContext.Provider value={value}>
+      <ThemeProvider theme={themeMode}>
+        <CssBaseline />
+        {children}
+      </ThemeProvider>
+    </CmsContext.Provider>
+  );
 };
 
 export const useCmsState = () => React.useContext(CmsContext);

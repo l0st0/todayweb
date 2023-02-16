@@ -13,6 +13,7 @@ export * from "./components/Form";
 export * from "./components/FormTextInput";
 export * from "./components/FormPasswordInput";
 export * from "./components/Portal";
+export * from "./components/ThemeSwitcher";
 
 // Pages
 export * from "./pages/HomePage";
@@ -25,4 +26,5 @@ export * from "./forms/LoginForm";
 
 // Context
 export * from "./context";
-export * from "./context/locales";
+export * from "./context/locale";
+export * from "./context/locale/locales";

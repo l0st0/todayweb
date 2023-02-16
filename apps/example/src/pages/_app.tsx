@@ -4,8 +4,6 @@ import Head from "next/head";
 import createEmotionCache from "../styles/createEmotionCache";
 import theme from "../styles/theme";
 import { CacheProvider, EmotionCache } from "@emotion/react";
-import CssBaseline from "@mui/material/CssBaseline";
-import { ThemeProvider } from "@mui/material/styles";
 import RootLayout from "../layouts/RootLayout";
 import {
   CmsContextProvider,
@@ -33,14 +31,11 @@ const MyApp = (props: MyAppProps) => {
         <title>Admin</title>
       </Head>
 
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <CmsContextProvider customLocales={{ en }}>
-          <RootLayout>
-            <Component {...pageProps} />
-          </RootLayout>
-        </CmsContextProvider>
-      </ThemeProvider>
+      <CmsContextProvider customLocales={{ en }} theme={theme}>
+        <RootLayout>
+          <Component {...pageProps} />
+        </RootLayout>
+      </CmsContextProvider>
     </CacheProvider>
   );
 };

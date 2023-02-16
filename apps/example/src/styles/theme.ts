@@ -1,9 +1,6 @@
-import type {} from "@mui/lab/themeAugmentation";
-import { skSK } from "@mui/material/locale";
-import { createTheme } from "@mui/material/styles";
-import { skSK as gridLang } from "@mui/x-data-grid";
 import { theme as UiTheme } from "@todayweb/cms";
 import { Raleway } from "@next/font/google";
+import { PaletteMode, ThemeOptions } from "@mui/material";
 
 export const raleway = Raleway({
   weight: ["300", "400", "500", "700"],
@@ -12,22 +9,19 @@ export const raleway = Raleway({
   fallback: ["Helvetica", "Arial", "sans-serif"],
 });
 
-const theme = createTheme(
-  {
-    ...UiTheme,
-    palette: {
-      primary: {
-        main: "#64A0FA",
-        contrastText: "#fff",
-      },
-    },
-    typography: {
-      ...UiTheme.typography,
-      fontFamily: raleway.style.fontFamily,
+const theme = (mode: PaletteMode): ThemeOptions => ({
+  ...UiTheme,
+  palette: {
+    mode,
+    primary: {
+      main: "#64A0FA",
+      contrastText: "#fff",
     },
   },
-  gridLang,
-  skSK
-);
+  typography: {
+    ...UiTheme.typography,
+    fontFamily: raleway.style.fontFamily,
+  },
+});
 
 export default theme;

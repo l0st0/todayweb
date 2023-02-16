@@ -9,6 +9,7 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  Stack,
   Toolbar,
   Tooltip,
 } from "@mui/material";
@@ -17,6 +18,7 @@ import { SettingsMenu } from "../SettingsMenu";
 import { StyledDrawerHeader, StyledDrawer, StyledAppBar } from "./styles";
 import { NavigationItem, SettingMenuItem } from "../../types";
 import Link from "next/link";
+import { ThemeSwitcher } from "../ThemeSwitcher";
 
 export interface AdminLayoutProps {
   logo: JSX.Element;
@@ -60,6 +62,8 @@ export const AppLayout = ({
 
           <div id="topBar-heading" />
           <Box sx={{ flexGrow: 1 }} />
+
+          <ThemeSwitcher />
           <SettingsMenu items={settingMenuItems} />
         </Toolbar>
       </StyledAppBar>

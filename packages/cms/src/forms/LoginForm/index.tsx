@@ -6,7 +6,8 @@ import { FormTextInput } from "../../components/FormTextInput";
 import { FormPasswordInput } from "../../components/FormPasswordInput";
 import { Alert } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
-import { CmsTranslateFunc, useCmsState } from "../../context";
+import { useCmsState } from "../../context";
+import { CmsTranslateFunc } from "../../context/locale";
 
 export interface LoginFormProps {
   onSubmit: (values: Form) => void;
