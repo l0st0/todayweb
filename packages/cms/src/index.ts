@@ -17,6 +17,8 @@ export * from "./components/FormPasswordInput";
 // Pages
 export * from "./pages/HomePage";
 export * from "./pages/LoginPage";
+export * from "./pages/ErrorPage";
+export * from "./pages/VerifyEmailPage";
 
 // Forms
 export * from "./forms/LoginForm";

@@ -9,17 +9,21 @@ export const LoginPage = ({
   errorMessage,
   isLoading,
   onSubmit,
-}: LoginPageProps) => {
+  children,
+}: React.PropsWithChildren<LoginPageProps>) => {
   const { t } = useCmsState();
 
   return (
     <Center spacing={2} height="100vh">
-      <Typography variant="h4">{t("loginHeading")}</Typography>
+      <Typography variant="h4" textAlign="center">
+        {t("loginHeading")}
+      </Typography>
       <LoginForm
         errorMessage={errorMessage}
         isLoading={isLoading}
         onSubmit={onSubmit}
       />
+      {children}
     </Center>
   );
 };

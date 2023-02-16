@@ -49,7 +49,7 @@ export const FormPasswordInput = <T extends FieldValues>({
 
   return (
     <FormControl variant="standard">
-      <InputLabel htmlFor={inputId} error={!!error}>
+      <InputLabel htmlFor={inputId} error={!!error} required={rest.required}>
         {label}
       </InputLabel>
       <Input

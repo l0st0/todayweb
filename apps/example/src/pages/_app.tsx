@@ -9,7 +9,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import RootLayout from "../layouts/RootLayout";
 import {
   CmsContextProvider,
-  cmsEnStrings,
+  localeStrings,
   CmsCustomLocaleStrings,
 } from "@todayweb/cms";
 
@@ -20,7 +20,7 @@ interface MyAppProps extends AppProps {
 }
 
 const en: CmsCustomLocaleStrings = {
-  ...cmsEnStrings,
+  ...localeStrings.en,
   login: "Login to admin",
 };
 

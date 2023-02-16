@@ -1,9 +1,12 @@
 import React from "react";
-import { cmsEnStrings, cmsSkStrings } from "./locales";
+import { localeStrings } from "./locales";
 
-export type CmsLocaleStrings = typeof cmsEnStrings;
+export type CmsLocaleStrings = typeof localeStrings.en;
 export type CmsLocaleString = keyof CmsLocaleStrings;
-export type CmsTranslateFunc = (string: CmsLocaleString) => string;
+export type CmsTranslateFunc = (
+  str: CmsLocaleString,
+  variables?: string[]
+) => string;
 export type CmsCustomLocaleStrings = CmsLocaleStrings & {
   [key: string]: string;
 };
@@ -27,22 +30,20 @@ export const CmsContextProvider = ({
   locale = "en",
   customLocales,
 }: React.PropsWithChildren<CmsContextProviderProps>) => {
-  const t = (string: CmsLocaleString) => {
-    let enStrings = cmsEnStrings;
-    let skStrings = cmsSkStrings;
+  const t = (str: CmsLocaleString, variables?: string[]) => {
+    let strings = customLocales?.[locale]
+      ? customLocales[locale]
+      : localeStrings[locale];
 
-    if (customLocales) {
-      if (customLocales.en) {
-        enStrings = customLocales.en;
-      }
+    if (!strings) return str;
 
-      if (customLocales.sk) {
-        skStrings = customLocales.sk;
-      }
-    }
+    let string = strings[str];
+    if (!string) return str;
+    if (!variables?.length) return string;
 
-    if (locale === "en") return enStrings[string] || string;
-    if (locale === "sk") return skStrings[string] || string;
+    variables.map((item, index) => {
+      string = string.replace(`{${index}}`, item);
+    });
 
     return string;
   };
