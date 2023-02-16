@@ -7,12 +7,22 @@ import { CacheProvider, EmotionCache } from "@emotion/react";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
 import RootLayout from "../layouts/RootLayout";
+import {
+  CmsContextProvider,
+  enLocaleStrings,
+  LocaleStrings,
+} from "@todayweb/cms";
 
 const clientSideEmotionCache = createEmotionCache();
 
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
 }
+
+const en: LocaleStrings = {
+  ...enLocaleStrings,
+  login: "Login to admin",
+};
 
 const MyApp = (props: MyAppProps) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
@@ -25,9 +35,11 @@ const MyApp = (props: MyAppProps) => {
 
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <RootLayout>
-          <Component {...pageProps} />
-        </RootLayout>
+        <CmsContextProvider customLocales={{ en }}>
+          <RootLayout>
+            <Component {...pageProps} />
+          </RootLayout>
+        </CmsContextProvider>
       </ThemeProvider>
     </CacheProvider>
   );

@@ -6,13 +6,7 @@ import { FormTextInput } from "../../components/FormTextInput";
 import { FormPasswordInput } from "../../components/FormPasswordInput";
 import { Alert } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
-
-const scheme = z.object({
-  email: z.string().email("Zadaj platný e-mail."),
-  password: z.string().min(8, "Heslo musí obsahovať minimálne 8 znakov."),
-});
-
-type Form = z.infer<typeof scheme>;
+import { Translate, useCmsState } from "../../context";
 
 export interface LoginFormProps {
   onSubmit: (values: Form) => void;
@@ -20,14 +14,25 @@ export interface LoginFormProps {
   errorMessage?: string;
 }
 
+const scheme = (t?: Translate) =>
+  z.object({
+    email: z.string().email(t && t("emailError")),
+    password: z.string().min(8, t && t("passwordError")),
+  });
+
+const rawScheme = scheme();
+type Form = z.infer<typeof rawScheme>;
+
 export const LoginForm = ({
   onSubmit,
   errorMessage,
   isLoading,
 }: LoginFormProps) => {
+  const { t } = useCmsState();
+
   const { control, handleSubmit } = useForm<Form>({
     defaultValues: { email: "", password: "" },
-    resolver: zodResolver(scheme),
+    resolver: zodResolver(scheme(t)),
   });
 
   return (
@@ -36,21 +41,21 @@ export const LoginForm = ({
         control={control}
         name="email"
         required
-        label="E-mail"
+        label={t("email")}
         autoComplete="email"
       />
 
       <FormPasswordInput
         control={control}
         name="password"
-        label="Heslo"
+        label={t("password")}
         required
       />
 
       {!!errorMessage && <Alert severity="error">{errorMessage}</Alert>}
 
       <LoadingButton type="submit" loading={isLoading}>
-        Prihlásiť
+        {t("login")}
       </LoadingButton>
     </Form>
   );
