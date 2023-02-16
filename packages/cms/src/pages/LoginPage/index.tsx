@@ -3,7 +3,7 @@ import { Center } from "../../components/Center";
 import { useCmsState } from "../../context";
 import { LoginForm, LoginFormProps } from "../../forms/LoginForm";
 
-interface LoginPageProps extends LoginFormProps {}
+export interface LoginPageProps extends LoginFormProps {}
 
 export const LoginPage = ({
   errorMessage,

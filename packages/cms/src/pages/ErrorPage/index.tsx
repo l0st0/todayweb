@@ -4,7 +4,7 @@ import { Button } from "@mui/material";
 import { Result } from "../../components/Result";
 import { useCmsState } from "../../context";
 
-interface ErrorPageProps {
+export interface ErrorPageProps {
   backPath?: string;
 }
 

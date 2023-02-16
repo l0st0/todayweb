@@ -15,7 +15,7 @@ export const VerifyEmailPage = ({ emailProvider }: VerifyEmailPageProps) => {
       icon={{
         element: <CheckCircleOutline />,
       }}
-      text="Prihlasovací link bol odoslaný na tvoj e-mail"
+      text={t("verifyResultText")}
       type="success"
       fullScreen
     >

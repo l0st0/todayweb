@@ -3,7 +3,7 @@ import { Center } from "../../components/Center";
 import { Button } from "@mui/material";
 import { NavigationItem } from "../../types";
 
-interface HomePageProps {
+export interface HomePageProps {
   logo: JSX.Element;
   items: NavigationItem[];
 }

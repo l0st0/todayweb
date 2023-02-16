@@ -20,6 +20,7 @@ export * from "./pages/HomePage";
 export * from "./pages/LoginPage";
 export * from "./pages/ErrorPage";
 export * from "./pages/VerifyEmailPage";
+export * from "./pages/NotFoundPage";
 
 // Forms
 export * from "./forms/LoginForm";

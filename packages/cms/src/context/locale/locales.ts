@@ -9,6 +9,10 @@ export const localeStrings = {
     loginError: "There was a problem with login",
     tryAgain: "Try again",
     goToPage: "Go to {0}",
+    back: "Back",
+    admin: "Admin",
+    notFoundResultText: "This page does not exists",
+    verifyResultText: "Login link was sent to your e-mail",
   },
   sk: {
     loginHeading: "Prihlásiť sa",
@@ -20,5 +24,9 @@ export const localeStrings = {
     loginError: "Nastal problém s prihlásením",
     tryAgain: "Skúsiť ešte raz",
     goToPage: "Prejsť na {0}",
+    back: "Späť",
+    admin: "Admin",
+    notFoundResultText: "Táto stránka neexistuje",
+    verifyResultText: "Prihlasovací link bol odoslaný na tvoj e-mail",
   },
 };
