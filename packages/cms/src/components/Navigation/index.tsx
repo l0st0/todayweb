@@ -7,7 +7,7 @@ import {
   Tooltip,
 } from "@mui/material";
 import Link from "next/link";
-import { NavigationItem } from "../types";
+import { NavigationItem } from "../../types";
 
 export interface NavigationProps {
   open: boolean;

@@ -1,16 +1,21 @@
 export * from "./styles/theme";
 export * from "./types";
 
-export * from "./AppLayout";
-export * from "./Navigation";
-export * from "./HomeNavigation";
-export * from "./SettingsMenu";
-export * from "./Result";
-export * from "./Center";
-export * from "./Loading";
-export * from "./DataGridToolBar";
-export * from "./TopHeading";
-export * from "./Form";
-export * from "./FormTextInput";
-export * from "./FormPasswordInput";
-export * from "./LoginForm";
+// Components
+export * from "./components/AppLayout";
+export * from "./components/Navigation";
+export * from "./components/SettingsMenu";
+export * from "./components/Result";
+export * from "./components/Center";
+export * from "./components/Loading";
+export * from "./components/DataGridToolBar";
+export * from "./components/TopHeading";
+export * from "./components/Form";
+export * from "./components/FormTextInput";
+export * from "./components/FormPasswordInput";
+
+// Pages
+export * from "./pages/HomePage";
+
+// Forms
+export * from "./forms/LoginForm";

@@ -1,14 +1,14 @@
 import Link from "next/link";
-import { Center } from "../Center";
+import { Center } from "../../components/Center";
 import { Button } from "@mui/material";
-import { NavigationItem } from "../types";
+import { NavigationItem } from "../../types";
 
-interface HomeNavigationProps {
+interface HomePageProps {
   logo: JSX.Element;
   items: NavigationItem[];
 }
 
-export const HomeNavigation = ({ items, logo }: HomeNavigationProps) => {
+export const HomePage = ({ items, logo }: HomePageProps) => {
   return (
     <Center justifyContent="flex-start" spacing={4}>
       {logo}

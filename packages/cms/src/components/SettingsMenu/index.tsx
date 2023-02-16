@@ -10,7 +10,7 @@ import {
   Stack,
   Tooltip,
 } from "@mui/material";
-import { SettingMenuItem } from "../types";
+import { SettingMenuItem } from "../../types";
 
 interface SettingsMenuProps {
   open: boolean;
@@ -45,9 +45,8 @@ export const SettingsMenu = ({ items, open, user }: SettingsMenuProps) => {
             color="inherit"
           >
             <AccountBoxRounded color="primary" />
+            {open && <span>{user || "Nastavenia"}</span>}
           </IconButton>
-
-          {open && <span>{user || "Nastavenia"}</span>}
         </Stack>
       </Tooltip>
       <Menu

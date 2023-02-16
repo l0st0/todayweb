@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Form } from "../Form";
-import { FormTextInput } from "../FormTextInput";
-import { FormPasswordInput } from "../FormPasswordInput";
+import { Form } from "../../components/Form";
+import { FormTextInput } from "../../components/FormTextInput";
+import { FormPasswordInput } from "../../components/FormPasswordInput";
 import { Alert } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 
