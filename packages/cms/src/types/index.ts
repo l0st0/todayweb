@@ -8,5 +8,6 @@ export interface NavigationItem {
 export interface SettingMenuItem {
   icon: JSX.Element;
   text: string;
-  onClick: () => void;
+  path?: string;
+  onClick?: () => void;
 }

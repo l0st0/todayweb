@@ -1,4 +1,4 @@
-import { Home, Login } from "@mui/icons-material";
+import { Home, Login, Logout, Settings } from "@mui/icons-material";
 import { AppLayout } from "@todayweb/cms";
 import { useRouter } from "next/router";
 import React from "react";
@@ -20,8 +20,13 @@ export const navigationItems = [
 
 const settingMenuItems = [
   {
-    icon: <Home fontSize="small" />,
-    text: "Home",
+    icon: <Settings fontSize="small" />,
+    text: "Settings",
+    path: "/settings",
+  },
+  {
+    icon: <Logout fontSize="small" />,
+    text: "Logout",
     onClick: () => console.log("hi"),
   },
 ];

@@ -2,6 +2,7 @@ import React from "react";
 import { AccountCircle } from "@mui/icons-material";
 import { IconButton, ListItemIcon, Menu, MenuItem } from "@mui/material";
 import { SettingMenuItem } from "../../types";
+import { useRouter } from "next/router";
 
 interface SettingsMenuProps {
   items: SettingMenuItem[];
@@ -9,6 +10,8 @@ interface SettingsMenuProps {
 
 export const SettingsMenu = ({ items }: SettingsMenuProps) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+
+  const router = useRouter();
 
   const handleClose = () => setAnchorEl(null);
   const handleMenu = (event: React.MouseEvent<HTMLElement>) =>
@@ -34,10 +37,17 @@ export const SettingsMenu = ({ items }: SettingsMenuProps) => {
         onClose={handleClose}
         keepMounted
       >
-        {items.map(({ icon, text, onClick }) => {
+        {items.map(({ icon, text, onClick, path }) => {
           const onMenuClick = () => {
-            onClick();
             handleClose();
+
+            if (onClick) {
+              onClick();
+            }
+
+            if (path) {
+              router.push(path);
+            }
           };
 
           return (
