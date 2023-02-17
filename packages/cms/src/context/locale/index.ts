@@ -4,7 +4,7 @@ export type CmsLocaleStrings = typeof localeStrings.en;
 export type CmsLocaleString = keyof CmsLocaleStrings;
 export type CmsTranslateFunc = (
   str: CmsLocaleString,
-  variables?: string[]
+  variables?: string[],
 ) => string;
 export type CmsCustomLocaleStrings = CmsLocaleStrings & {
   [key: string]: string;

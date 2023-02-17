@@ -1,0 +1,20 @@
+{
+  "name": "@todayweb/prettier",
+  "version": "1.0.0",
+  "main": ".prettierrc.json",
+  "license": "MIT",
+  "scripts": {
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "tsc": "tsc --noEmit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/l0st0/todayweb/tree/main/packages/prettier"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "prettier": "^2.8.3"
+  }
+}

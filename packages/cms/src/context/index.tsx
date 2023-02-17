@@ -59,12 +59,12 @@ export const CmsContextProvider = ({
         });
       },
     }),
-    []
+    [],
   );
 
   const themeMode = React.useMemo(
     () => createTheme(theme(mode), gridLang, skSK),
-    [mode]
+    [mode],
   );
 
   const t = (str: CmsLocaleString, variables?: string[]) =>

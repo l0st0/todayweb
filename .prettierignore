@@ -1,0 +1,6 @@
+.next
+dist
+node_modules
+prisma
+public
+README.md
