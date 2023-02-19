@@ -20,13 +20,13 @@
   "devDependencies": {
     "@changesets/cli": "^2.26.0",
     "@todayweb/prettier": "*",
-    "prettier": "latest",
-    "turbo": "latest"
+    "prettier": "^2.8.4",
+    "turbo": "^1.8.1"
   },
   "engines": {
     "node": ">=16.0.0",
-    "npm": ">= 8.19.0",
+    "npm": "please-use-yarn",
     "yarn": ">= 1.22.0"
   },
-  "packageManager": "npm@8.19.0"
+  "packageManager": "yarn@1.22.0"
 }
